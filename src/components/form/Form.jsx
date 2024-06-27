@@ -82,10 +82,10 @@ export default function Form({ onSubmit, isLoading }) {
 
   const isNextDisabled =
     form[pages[activeStep].name] === '' || activeStep === pages.length - 1
-      ? true
-      : false
 
-  const isPrevDisabled = activeStep === 0 ? true : false
+  const isPrevDisabled = activeStep === 0
+
+  const isSubmitDisabled = isLoading || form[pages[activeStep].name] === ''
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:px-8">
@@ -103,7 +103,7 @@ export default function Form({ onSubmit, isLoading }) {
           ) : (
             <Button
               onClick={() => handleSubmitForm()}
-              isDisabled={isLoading || form[pages[activeStep].name] === ''}
+              isDisabled={isSubmitDisabled}
             >
               {submitButtonText}
             </Button>

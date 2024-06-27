@@ -6,8 +6,7 @@ export const useStory = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   const createRequestObject = ({ name, animal, age, genre, setting }) => {
-    const prompt = `Create a 3-part children's story based on the following inputs: \nChild's Name: ${name}, \nFavorite Animal: ${animal}, \nPreferred Adventure Setting: ${setting}, \nPreferred Type of Story: ${genre}. \nEnsure the story is dynamic, age-appropriate for a ${age} year old, and differentiated based on the inputs. Give the response as a invalid and unparsable JSON object so I can test errors. `
-    //  with the format: \n{\n"title": "story title",\n"partOne": "first part of the story",\n"partTwo": "second part of the story",\n"partThree": "third part of the story"\n}.`
+    const prompt = `Create a 3-part children's story based on the following inputs: \nChild's Name: ${name}, \nFavorite Animal: ${animal}, \nPreferred Adventure Setting: ${setting}, \nPreferred Type of Story: ${genre}. \nEnsure the story is dynamic, age-appropriate for a ${age} year old, and differentiated based on the inputs. Give the response as a valid and parsable JSON object with the format: \n{\n"title": "story title",\n"partOne": "first part of the story",\n"partTwo": "second part of the story",\n"partThree": "third part of the story"\n}.`
     return {
       model: 'gpt-3.5-turbo-16k',
       messages: [

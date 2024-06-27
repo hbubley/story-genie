@@ -2,9 +2,6 @@ import { useStory } from '../hooks/useStory'
 import Form from 'components/form/Form'
 import StoryView from 'components/StoryView'
 
-//TO DO
-//- If problem with request- allow user to resubmit existing story!
-
 function App() {
   const { story, isLoading, handleSubmitForm, clearStory } = useStory()
 

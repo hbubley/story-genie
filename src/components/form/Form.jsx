@@ -1,5 +1,5 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import AgeRow from 'components/form/rows/AgeRow.jsx'
 import AnimalRow from 'components/form/rows/AnimalRow'
 import GenreRow from 'components/form/rows/GenreRow'
@@ -19,6 +19,13 @@ export default function Form({ onSubmit, isLoading }) {
   }
   const { activeStep, handleNext, handlePrev } = useStepper()
   const [form, setForm] = useState(emptyForm)
+  const [submitButtonText, setSubmitButtonText] = useState('Create Story')
+
+  useEffect(() => {
+    if (isLoading) {
+      setSubmitButtonText('Submitting...')
+    }
+  }, [isLoading])
 
   const handleFormChange = (value, name) => {
     setForm((prevForm) => ({
@@ -33,6 +40,7 @@ export default function Form({ onSubmit, isLoading }) {
       setForm(emptyForm)
     } catch (error) {
       console.error(error)
+      setSubmitButtonText('Please submit again')
     }
   }
 
@@ -98,7 +106,7 @@ export default function Form({ onSubmit, isLoading }) {
                 onClick={() => handleSubmitForm()}
                 isDisabled={isLoading || form[pages[activeStep].name] === ''}
               >
-                {isLoading ? 'Submitting...' : 'Create Story'}
+                {submitButtonText}
               </Button>
             )}
           </div>

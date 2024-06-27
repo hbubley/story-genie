@@ -1,80 +1,51 @@
-![reactjs-vite-tailwindcss-boilerplate](https://user-images.githubusercontent.com/16243531/217138979-b854309c-4742-4275-a705-f9fec5158217.jpg)
+# StoryGenie
 
-# React Tailwindcss Boilerplate build with Vite
+StoryGenie is a web application that uses OpenAI to generate 3-part children's stories based on user input. The application collects 3-5 data points about the child and generates a dynamic and age-appropriate story.
 
-This is a boilerplate build with Vite, React 18, TypeScript, Vitest, Testing Library, TailwindCSS 3, Eslint and Prettier.
+## Features
 
-## What is inside?
+- Generate dynamic and age-appropriate children's stories
+- Collects 3-5 data points about the child
+- Step-by-step form with progress indicator
+- Story preview and option to create another story
 
-This project uses many tools like:
+## Technologies
 
-- [Vite](https://vitejs.dev)
-- [ReactJS](https://reactjs.org)
-- [TypeScript](https://www.typescriptlang.org)
-- [Vitest](https://vitest.dev)
-- [Testing Library](https://testing-library.com)
-- [Tailwindcss](https://tailwindcss.com)
-- [Eslint](https://eslint.org)
-- [Prettier](https://prettier.io)
+- React
+- TailwindCSS
+- Vite
+- OpenAI API
 
-## Getting Started
+## Installation
 
-### Install
+1. Clone the repository:
 
-Create the project.
+    ```sh
+    git clone https://github.com/hbubley/storygenie.git
+    cd storygenie
+    ```
 
-```bash
-npx degit joaopaulomoraes/reactjs-vite-tailwindcss-boilerplate my-app
-```
+2. Install dependencies:
 
-Access the project directory.
+    ```sh
+    npm install
+    ```
 
-```bash
-cd my-app
-```
+3. Create a `.env` file in the root directory and add your OpenAI API key:
 
-Install dependencies.
+    ```env
+    REACT_APP_OPENAI_API_KEY=your_openai_api_key
+    ```
 
-```bash
-pnpm install
-```
+4. Run the development server:
 
-Serve with hot reload at <http://localhost:5173>.
+    ```sh
+    npm run dev
+    ```
 
-```bash
-pnpm run dev
-```
+## Usage
 
-### Lint
-
-```bash
-pnpm run lint
-```
-
-### Typecheck
-
-```bash
-pnpm run typecheck
-```
-
-### Build
-
-```bash
-pnpm run build
-```
-
-### Test
-
-```bash
-pnpm run test
-```
-
-View and interact with your tests via UI.
-
-```bash
-pnpm run test:ui
-```
-
-## License
-
-This project is licensed under the MIT License.
+1. Open your browser and go to `http://localhost:5173`.
+2. Fill out the form with the child's information.
+3. Click "Create Story" to generate a story.
+4. View the generated story and create another one if desired.

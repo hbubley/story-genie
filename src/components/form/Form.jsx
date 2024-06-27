@@ -9,7 +9,7 @@ import Stepper from 'components/form/Stepper'
 import Button from 'components/form/Button'
 import { useStepper } from 'hooks/useStepper'
 
-export default function Form({ onSubmit }) {
+export default function Form({ onSubmit, isLoading }) {
   const emptyForm = {
     name: '',
     age: '',
@@ -90,7 +90,12 @@ export default function Form({ onSubmit }) {
                 <i className="bx bxs-chevron-right"></i>
               </Button>
             ) : (
-              <Button onClick={() => handleSubmitForm()}>Create Story</Button>
+              <Button
+                onClick={() => handleSubmitForm()}
+                isDisabled={isLoading || form[pages[activeStep].name] === ''}
+              >
+                {isLoading ? 'Submitting...' : 'Create Story'}
+              </Button>
             )}
           </div>
         </form>

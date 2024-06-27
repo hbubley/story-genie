@@ -28,8 +28,12 @@ export default function Form({ onSubmit, isLoading }) {
   }
 
   const handleSubmitForm = async () => {
-    await onSubmit(form)
-    setForm(emptyForm)
+    try {
+      await onSubmit(form)
+      setForm(emptyForm)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   const pages = [

@@ -6,7 +6,7 @@ export const useStory = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   const createRequestObject = ({ name, animal, age, genre, setting }) => {
-    const prompt = `Create a 3-part children's story based on the following inputs: \nChild's Name: ${name}, \nFavorite Animal: ${animal}, \nPreferred Adventure Setting: ${setting}, \nPreferred Type of Story: ${genre}. \nEnsure the story is dynamic, age-appropriate for a ${age} year old, and differentiated based on the inputs. Give the response as a valid and parsable JSON object with the format of Give the response as a valid and parsable JSON object with the format: \n{\n"title": "story title",\n"partOne": "first part of the story",\n"partTwo": "second part of the story",\n"partThree": "third part of the story"\n}.`
+    const prompt = `Create a 3-part children's story based on the following inputs: \nChild's Name: ${name}, \nFavorite Animal: ${animal}, \nPreferred Adventure Setting: ${setting}, \nPreferred Type of Story: ${genre}. \nEnsure the story is dynamic, age-appropriate for a ${age} year old, and differentiated based on the inputs. Give the response as a valid and parsable JSON object with the format: \n{\n"title": "story title",\n"partOne": "first part of the story",\n"partTwo": "second part of the story",\n"partThree": "third part of the story"\n}.`
     return {
       model: 'gpt-3.5-turbo-16k',
       messages: [
@@ -19,12 +19,8 @@ export const useStory = () => {
   }
 
   const requestStory = async (data) => {
-    try {
-      const response = await client.post('', data)
-      return JSON.parse(response.data.choices[0].message.content)
-    } catch (error) {
-      console.error('Error:', error)
-    }
+    const response = await client.post('', data)
+    return JSON.parse(response.data.choices[0].message.content)
   }
 
   const handleSubmitForm = async (form) => {
@@ -33,9 +29,18 @@ export const useStory = () => {
 
     try {
       const story = await requestStory(requestObject)
-      setStory(story)
+      if (
+        story &&
+        story.title &&
+        story.partOne &&
+        story.partTwo &&
+        story.partThree
+      ) {
+        setStory(story)
+      }
     } catch (error) {
       console.error('Error generating story:', error)
+      throw error
     } finally {
       setIsLoading(false)
     }

@@ -21,7 +21,7 @@ StoryGenie is a web application that uses OpenAI to generate 3-part children's s
 1. Clone the repository:
 
     ```sh
-    git clone https://github.com/hbubley/storygenie.git
+    git clone https://github.com/hbubley/story-genie.git
     cd storygenie
     ```
 

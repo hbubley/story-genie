@@ -6,7 +6,7 @@ function App() {
   const { story, isLoading, handleSubmitForm, clearStory } = useStory()
 
   return (
-    <div className="min-h-screen content-center bg-[linear-gradient(45deg,#371fb7,#b21be8,#f5aa0b)]">
+    <div className="min-h-screen content-center bg-legends-gradient">
       {story === '' ? (
         <>
           <h1 className="text-center text-4xl font-bold text-white md:text-6xl">

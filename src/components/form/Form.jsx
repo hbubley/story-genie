@@ -88,30 +88,28 @@ export default function Form({ onSubmit, isLoading }) {
   const isPrevDisabled = activeStep === 0 ? true : false
 
   return (
-    <>
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:px-8">
-        <Stepper pages={pages} activeStep={activeStep} />
-        <form className="mb-0 mt-6 min-h-full space-y-4 rounded-lg bg-white p-4 shadow-lg sm:p-6 lg:p-8">
-          <div className="min-h-32">{pages[activeStep].renderPage()}</div>
-          <div className="flex justify-between">
-            <Button onClick={handlePrev} isDisabled={isPrevDisabled}>
-              <i className="bx bxs-chevron-left"></i>
+    <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:px-8">
+      <Stepper pages={pages} activeStep={activeStep} />
+      <form className="mb-0 mt-6 min-h-full space-y-4 rounded-lg bg-white p-4 shadow-lg sm:p-6 lg:p-8">
+        <div className="min-h-32">{pages[activeStep].renderPage()}</div>
+        <div className="flex justify-between">
+          <Button onClick={handlePrev} isDisabled={isPrevDisabled}>
+            <i className="bx bxs-chevron-left"></i>
+          </Button>
+          {activeStep !== pages.length - 1 ? (
+            <Button onClick={handleNext} isDisabled={isNextDisabled}>
+              <i className="bx bxs-chevron-right"></i>
             </Button>
-            {activeStep !== pages.length - 1 ? (
-              <Button onClick={handleNext} isDisabled={isNextDisabled}>
-                <i className="bx bxs-chevron-right"></i>
-              </Button>
-            ) : (
-              <Button
-                onClick={() => handleSubmitForm()}
-                isDisabled={isLoading || form[pages[activeStep].name] === ''}
-              >
-                {submitButtonText}
-              </Button>
-            )}
-          </div>
-        </form>
-      </div>
-    </>
+          ) : (
+            <Button
+              onClick={() => handleSubmitForm()}
+              isDisabled={isLoading || form[pages[activeStep].name] === ''}
+            >
+              {submitButtonText}
+            </Button>
+          )}
+        </div>
+      </form>
+    </div>
   )
 }

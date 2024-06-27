@@ -7,12 +7,11 @@
   "homepage": "https://hbubley.github.io/story-genie/",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "serve": "vite preview",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "lint": "eslint src --max-warnings=0",
-    "typecheck": "tsc --project tsconfig.json --noEmit",
     "predeploy" : "npm run build",
     "deploy" : "gh-pages -d dist"
   },

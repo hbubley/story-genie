@@ -34,7 +34,7 @@ StoryGenie is a web application that uses OpenAI to generate 3-part children's s
 3. Create a `.env` file in the root directory and add your OpenAI API key:
 
     ```env
-    REACT_APP_OPENAI_API_KEY=your_openai_api_key
+    VITE_API_KEY=your_openai_api_key
     ```
 
 4. Run the development server:
